@@ -2,14 +2,32 @@
 
 BEGIN{
 	FS = OFS = "\t"
-	maxwl = 5
-
-	unused["B"]
-	unused["J"]
-	unused["U"]
-	unused["X"]
-	unused["Z"]
-	npept[1] = 20; npept[2] = 380; npept[3] = 6840; npept[4] = 116280; npept[5] = 1860480
+	if(seqtype == "P"){
+		unused["B"]
+		unused["J"]
+		unused["U"]
+		unused["X"]
+		unused["Z"]
+		nmono = 20
+		maxwl = 5
+	}
+	else{
+		unused["N"]
+		unused["W"]
+		unused["R"]
+		unused["S"]
+		unused["Y"]
+		unused["K"]
+		unused["M"]
+		unused["D"]
+		unused["B"]
+		unused["V"]
+		unused["H"]
+		nmono = 4
+		maxwl = 10
+	}
+	for(i=1;i<=maxwl;i++)
+		nnxmer[i] = nmono^i
 }
 
 function min(a,b){
@@ -50,17 +68,16 @@ function lcomp(seq, w, j, nwords, val, word, lseq){
 		wc = 0
 		for(j in word[w])
 			wc++
-		val*=wc/min(nwords[w],npept[w])
+		val*=wc/min(nwords[w],nnxmer[w])
 	}
 	return val
 }
 
 {
-	for(i in unused){
-		if($2~i)
-			next
-	}
-	
+#	for(i in unused){
+#		if($2~i)
+#			next
+#	}	
 	if(FNR==1)
 		print "name","ShannonH","lcomplexity"
 	print $1, shannon($2),lcomp($2)

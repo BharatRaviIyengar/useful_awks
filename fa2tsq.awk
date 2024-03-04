@@ -1,7 +1,7 @@
 #!/usr/bin/mawk -f
 
 BEGIN{
-	print "\n Please ensure that each fasta sequence occupies just one line\n i.e. 1 line for header + 1 line for sequence \n If not, run 2lineFasta.awk first\n"
+#	print "\n Please ensure that each fasta sequence occupies just one line\n i.e. 1 line for header + 1 line for sequence \n If not, run 2lineFasta.awk first\n"
 	OFS = "\t"
 }
 
