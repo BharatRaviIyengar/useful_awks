@@ -14,6 +14,10 @@ BEGIN{
 		print "strand unspecified (values 1 or 2);\n using 1"
         strand = 1
 	}
+	if(x == 0 || x == ""){
+		print "window offset unspecified;\n using 1"
+		x = 1
+	}
 }
 
 function rc(str){
@@ -25,7 +29,7 @@ function rc(str){
 
 {
 	l = length($2)
-	for(i=1;i<=l-w+1;i++){
+	for(i=1;i<=l-w+1;i+=x){
 		s = substr($2,i,w)
 		if(!(s~/N/)){
 			k[s]++
