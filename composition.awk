@@ -33,7 +33,7 @@ BEGIN{
 }
 
 END{
-	print "flank size = " w ", offset size = "  o
+	print "## flank size = " w ", offset size = "  o
 	printf("End\tSeq")
 	for(i=1;i<=w-o+1;i+=o)
 		printf("\t%d",i)
