@@ -28,7 +28,6 @@ BEGIN{
 	}
 	for(i=1;i<=maxwl;i++)
 		nnxmer[i] = nmono^i
-	header = 1
 }
 
 function min(a,b){
@@ -78,8 +77,8 @@ function lcomp(seq, w, j, nwords, val, word, lseq){
 #	for(i in unused){
 #		if($2~i)
 #			next
-#	}	
-	if(FNR==1 && header !=0)
+#	}
+	if(FNR==1 && (header !=0 || header !=""))
 		print "name","ShannonH","lcomplexity"
 	print $1, shannon($2),lcomp($2)
 }
