@@ -23,6 +23,7 @@ BEGIN{
 	H["Y"] = -0.94
 
 	# Wimley and White
+	FS = OFS = "\t"
 }
 
 {
