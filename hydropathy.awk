@@ -28,8 +28,13 @@ BEGIN{
 
 {
 	hx = 0
+	ha = 0
 	l=length($2)
-	for(i=1;i<=l;i++)
-		hx+=H[substr($2,i,1)]
-	print $1, hx/l
+	for(i=1;i<=l;i++){
+		cr = H[substr($2,i,1)]
+		hx+= cr
+		if(cr<0) ha++
+		
+	}
+	print $1, hx/l, ha/l
 }
