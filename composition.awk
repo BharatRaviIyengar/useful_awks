@@ -12,6 +12,7 @@ BEGIN{
 		o = 1
 	while(w%o != 0)
 		w++
+	PROCINFO["sorted_in"] = "@ind_str_asc"
 		
 }
 
